@@ -1,0 +1,527 @@
+{
+  "title": "My Advanced Form",
+  "description": "A multi-page form with conditional logic",
+  "layout_theme": "modern",
+  "settings": {
+    "allowBack": true,
+    "showProgress": true,
+    "saveProgress": true,
+    "submitOnce": false
+  },
+  "pages": [
+    {
+      "pageId": "page-1",
+      "title": "Rate Our Work",
+      "description": "We'd love to hear your feedback",
+      "layout_type": "fullscreen",
+      "fields": [
+        {
+          "fieldId": "work_rating",
+          "title": "Give us rating of our work?",
+          "description": "Rate us from 1 to 5 stars",
+          "required": true,
+          "type": "stepped_progressbar",
+          "config": {
+            "total": 5,
+            "defaultValue": 3,
+            "showLabels": true,
+            "labels": ["Poor", "Fair", "Good", "Great", "Excellent"]
+          }
+        }
+      ],
+      "actions": [
+        {
+          "actionId": "rating-navigation",
+          "type": "navigate",
+          "trigger": {
+            "event": "next"
+          },
+          "conditions": [
+            {
+              "fieldId": "work_rating",
+              "operator": "greater_than",
+              "value": 3,
+              "target": {
+                "type": "page",
+                "id": "page-3"
+              }
+            },
+            {
+              "fieldId": "work_rating",
+              "operator": "less_than_or_equal",
+              "value": 3,
+              "target": {
+                "type": "page",
+                "id": "page-2"
+              }
+            }
+          ],
+          "default": {
+            "type": "page",
+            "id": "page-2"
+          }
+        }
+      ]
+    },
+    {
+      "pageId": "page-2",
+      "title": "Additional Feedback",
+      "description": "Help us improve with detailed feedback",
+      "layout_type": "fullscreen",
+      "fields": [
+        {
+          "fieldId": "star_rating",
+          "title": "Rate specific aspects of our service?",
+          "description": "Please rate different aspects",
+          "required": false,
+          "type": "star_rating",
+          "config": {
+            "total": 5,
+            "defaultValue": 3,
+            "aspects": ["Quality", "Speed", "Support"]
+          }
+        },
+        {
+          "fieldId": "improvement_areas",
+          "title": "What areas need improvement?",
+          "description": "Select all that apply",
+          "required": false,
+          "type": "checkbox",
+          "config": {
+            "options": [
+              {
+                "value": "quality",
+                "label": "Product Quality"
+              },
+              {
+                "value": "delivery",
+                "label": "Delivery Speed"
+              },
+              {
+                "value": "support",
+                "label": "Customer Support"
+              },
+              {
+                "value": "pricing",
+                "label": "Pricing"
+              }
+            ],
+            "defaultValue": []
+          }
+        }
+      ],
+      "actions": [
+        {
+          "actionId": "feedback-navigation",
+          "type": "navigate",
+          "trigger": {
+            "event": "next"
+          },
+          "conditions": [],
+          "default": {
+            "type": "page",
+            "id": "page-4"
+          }
+        }
+      ]
+    },
+    {
+      "pageId": "page-3",
+      "title": "Personal Information",
+      "description": "Tell us a bit about yourself",
+      "layout_type": "fullscreen",
+      "fields": [
+        {
+          "fieldId": "user_age",
+          "title": "Enter your age?",
+          "description": "This helps us serve you better",
+          "required": true,
+          "type": "number",
+          "config": {
+            "defaultValue": 25,
+            "min": 16,
+            "max": 99,
+            "step": 1
+          }
+        }
+      ],
+      "actions": [
+        {
+          "actionId": "age-based-navigation",
+          "type": "navigate",
+          "trigger": {
+            "event": "next"
+          },
+          "conditions": [
+            {
+              "fieldId": "user_age",
+              "operator": "less_than",
+              "value": 25,
+              "target": {
+                "type": "page",
+                "id": "page-5"
+              }
+            },
+            {
+              "fieldId": "user_age",
+              "operator": "greater_than_or_equal",
+              "value": 25,
+              "target": {
+                "type": "page",
+                "id": "page-6"
+              }
+            }
+          ],
+          "default": {
+            "type": "page",
+            "id": "page-4"
+          }
+        }
+      ]
+    },
+    {
+      "pageId": "page-4",
+      "title": "Service Preferences",
+      "description": "Help us customize your experience",
+      "layout_type": "fullscreen",
+      "fields": [
+        {
+          "fieldId": "service_preferences",
+          "title": "Which services interest you most?",
+          "description": "Select all that apply",
+          "required": false,
+          "type": "checkbox",
+          "config": {
+            "options": [
+              {
+                "value": "premium",
+                "label": "Premium Services"
+              },
+              {
+                "value": "basic",
+                "label": "Basic Services"
+              },
+              {
+                "value": "consultation",
+                "label": "Consultation"
+              },
+              {
+                "value": "support",
+                "label": "24/7 Support"
+              }
+            ],
+            "defaultValue": ["basic"]
+          }
+        }
+      ],
+      "actions": [
+        {
+          "actionId": "service-navigation",
+          "type": "navigate",
+          "trigger": {
+            "event": "next"
+          },
+          "conditions": [],
+          "default": {
+            "type": "page",
+            "id": "page-7"
+          }
+        }
+      ]
+    },
+    {
+      "pageId": "page-5",
+      "title": "Communication Preference",
+      "description": "How would you like to hear from us?",
+      "layout_type": "fullscreen",
+      "fields": [
+        {
+          "fieldId": "contact_method",
+          "title": "Preferred contact method?",
+          "description": "Choose your preferred way to communicate",
+          "required": true,
+          "type": "radio",
+          "config": {
+            "options": [
+              {
+                "value": "email",
+                "label": "Email"
+              },
+              {
+                "value": "phone",
+                "label": "Phone"
+              },
+              {
+                "value": "sms",
+                "label": "SMS"
+              },
+              {
+                "value": "none",
+                "label": "No contact please"
+              }
+            ],
+            "defaultValue": "email"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "actionId": "contact-navigation",
+          "type": "navigate",
+          "trigger": {
+            "event": "next"
+          },
+          "conditions": [
+            {
+              "fieldId": "contact_method",
+              "operator": "not_equals",
+              "value": "none",
+              "target": {
+                "type": "page",
+                "id": "page-6"
+              }
+            }
+          ],
+          "default": {
+            "type": "page",
+            "id": "page-8"
+          }
+        }
+      ]
+    },
+    {
+      "pageId": "page-6",
+      "title": "Document Upload",
+      "description": "Upload any relevant documents",
+      "layout_type": "fullscreen",
+      "fields": [
+        {
+          "fieldId": "documents",
+          "title": "Upload Document",
+          "description": "Upload any supporting documents (optional)",
+          "required": false,
+          "type": "file_upload",
+          "config": {
+            "maxSize": 10,
+            "acceptedFileTypes": ".pdf,.jpg,.jpeg,.png,.doc,.docx",
+            "multiple": true,
+            "maxFiles": 3
+          }
+        }
+      ],
+      "actions": [
+        {
+          "actionId": "upload-navigation",
+          "type": "navigate",
+          "trigger": {
+            "event": "next"
+          },
+          "conditions": [],
+          "default": {
+            "type": "page",
+            "id": "page-7"
+          }
+        }
+      ]
+    },
+    {
+      "pageId": "page-7",
+      "title": "Overall Experience",
+      "description": "How was your experience with us?",
+      "layout_type": "fullscreen",
+      "fields": [
+        {
+          "fieldId": "experience_emoji",
+          "title": "How's your experience?",
+          "description": "Express your feeling with an emoji",
+          "required": true,
+          "type": "emojis_review",
+          "config": {
+            "emojis": ["😞", "😐", "🙂", "😊", "🤩"],
+            "labels": ["Very Bad", "Bad", "Okay", "Good", "Excellent"],
+            "defaultValue": 2
+          }
+        }
+      ],
+      "actions": [
+        {
+          "actionId": "experience-navigation",
+          "type": "navigate",
+          "trigger": {
+            "event": "next"
+          },
+          "conditions": [
+            {
+              "fieldId": "experience_emoji",
+              "operator": "less_than",
+              "value": 2,
+              "target": {
+                "type": "page",
+                "id": "page-9"
+              }
+            }
+          ],
+          "default": {
+            "type": "page",
+            "id": "page-8"
+          }
+        }
+      ]
+    },
+    {
+      "pageId": "page-8",
+      "title": "Recommendation",
+      "description": "Help us grow our community",
+      "layout_type": "fullscreen",
+      "fields": [
+        {
+          "fieldId": "would_recommend",
+          "title": "Would you recommend us to others?",
+          "description": "Your recommendation means a lot to us",
+          "required": true,
+          "type": "yes_or_no",
+          "config": {
+            "defaultValue": true,
+            "yesLabel": "Yes, definitely!",
+            "noLabel": "Not really"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "actionId": "recommendation-navigation",
+          "type": "navigate",
+          "trigger": {
+            "event": "next"
+          },
+          "conditions": [
+            {
+              "fieldId": "would_recommend",
+              "operator": "equals",
+              "value": false,
+              "target": {
+                "type": "page",
+                "id": "page-9"
+              }
+            }
+          ],
+          "default": {
+            "type": "page",
+            "id": "page-10"
+          }
+        }
+      ]
+    },
+    {
+      "pageId": "page-9",
+      "title": "Help Us Improve",
+      "description": "Your feedback will help us serve you better",
+      "layout_type": "fullscreen",
+      "fields": [
+        {
+          "fieldId": "improvement_suggestions",
+          "title": "What can we do better?",
+          "description": "Please select the most important area for improvement",
+          "required": true,
+          "type": "detailed_options",
+          "config": {
+            "options": [
+              {
+                "value": "product_quality",
+                "text": "Improve Product Quality",
+                "description": "Focus on better materials and craftsmanship"
+              },
+              {
+                "value": "customer_service",
+                "text": "Better Customer Service",
+                "description": "More responsive and helpful support team"
+              },
+              {
+                "value": "delivery_speed",
+                "text": "Faster Delivery",
+                "description": "Reduce shipping and processing times"
+              },
+              {
+                "value": "pricing",
+                "text": "Better Pricing",
+                "description": "More competitive and transparent pricing"
+              },
+              {
+                "value": "website_experience",
+                "text": "Improve Website Experience",
+                "description": "Make the website more user-friendly"
+              }
+            ],
+            "defaultValue": "product_quality"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "actionId": "improvement-navigation",
+          "type": "navigate",
+          "trigger": {
+            "event": "next"
+          },
+          "conditions": [],
+          "default": {
+            "type": "page",
+            "id": "page-10"
+          }
+        }
+      ]
+    },
+    {
+      "pageId": "page-10",
+      "title": "Thank You!",
+      "description": "We appreciate your valuable feedback",
+      "layout_type": "fullscreen",
+      "fields": [
+        {
+          "fieldId": "final_comments",
+          "title": "Any final thoughts?",
+          "description": "Share any additional comments or suggestions",
+          "required": false,
+          "type": "text_area",
+          "config": {
+            "placeholder": "Your thoughts and suggestions...",
+            "maxLength": 500,
+            "rows": 4
+          }
+        }
+      ],
+      "actions": [
+        {
+          "actionId": "form-submit",
+          "type": "submit",
+          "trigger": {
+            "event": "submit"
+          },
+          "validation": {
+            "validateAll": true,
+            "requiredFields": true
+          }
+        }
+      ]
+    }
+  ],
+  "globalActions": [
+    {
+      "actionId": "auto-save",
+      "type": "auto_save",
+      "trigger": {
+        "event": "field_change",
+        "debounce": 2000
+      }
+    }
+  ],
+  "submissions": {
+    "endpoint": "/api/forms/submit",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "successMessage": "Thank you! Your feedback has been submitted successfully.",
+    "errorMessage": "There was an error submitting the form. Please try again."
+  }
+}

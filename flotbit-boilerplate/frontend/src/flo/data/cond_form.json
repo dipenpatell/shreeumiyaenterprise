@@ -1,0 +1,148 @@
+{
+  "formId": "unique-form-id",
+  "title": "Multi-Page Form",
+  "description": "A form with conditional logic and multiple pages",
+  "layout_theme": "default",
+  "version": "1.0",
+
+  "settings": {
+    "allowBack": true,
+    "showProgress": true,
+    "saveProgress": true,
+    "submitOnce": false
+  },
+
+  "pages": [
+    {
+      "pageId": "page-1",
+      "title": "Personal Information",
+      "description": "Basic personal details",
+      "order": 1,
+      "sections": [
+        {
+          "sectionId": "section-1-1",
+          "title": "Basic Info",
+          "description": "Your basic information",
+          "order": 1,
+          "fields": [
+            {
+              "fieldId": "firstName",
+              "type": "text",
+              "title": "First Name",
+              "description": "",
+              "placeholder": "Enter your first name",
+              "required": true,
+              "validation": {
+                "min": 2,
+                "max": 50,
+                "pattern": "^[a-zA-Z\\s]+$",
+                "errorMessage": "First name must contain only letters"
+              }
+            },
+            {
+              "fieldId": "hasExperience",
+              "title": "Do you have previous experience?",
+              "description": "Description (optional)",
+              "type": "yes_or_no",
+              "required": true,
+              "config": {
+                "defaultValue": false
+              }
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "triggerField": "hasExperience",
+          "conditions": [
+            {
+              "operator": "equals",
+              "value": true,
+              "goToPage": "page-3"
+            },
+            {
+              "operator": "equals",
+              "value": false,
+              "goToPage": "page-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pageId": "page-2",
+      "title": "Fresher Details",
+      "description": "Educational details for freshers",
+      "order": 2,
+      "sections": [
+        {
+          "sectionId": "section-2-1",
+          "title": "Education",
+          "description": "Your education details",
+          "order": 1,
+          "fields": [
+            {
+              "fieldId": "highestDegree",
+              "type": "select",
+              "title": "Highest Qualification",
+              "description": "",
+              "required": true,
+              "options": [
+                { "label": "High School", "value": "high_school" },
+                { "label": "Bachelor's", "value": "bachelors" },
+                { "label": "Master's", "value": "masters" }
+              ]
+            }
+          ]
+        }
+      ],
+      "actions": []
+    },
+    {
+      "pageId": "page-3",
+      "title": "Experience Details",
+      "description": "Work history for experienced candidates",
+      "order": 3,
+      "sections": [
+        {
+          "sectionId": "section-3-1",
+          "title": "Work History",
+          "description": "Your past job experience",
+          "order": 1,
+          "fields": [
+            {
+              "fieldId": "companyName",
+              "type": "text",
+              "title": "Company Name",
+              "placeholder": "Enter company name",
+              "required": true
+            },
+            {
+              "fieldId": "yearsExperience",
+              "type": "number",
+              "title": "Years of Experience",
+              "required": true,
+              "validation": {
+                "min": 0,
+                "max": 40,
+                "errorMessage": "Years must be between 0 and 40"
+              }
+            }
+          ]
+        }
+      ],
+      "actions": []
+    }
+  ],
+
+  "submissions": {
+    "endpoint": "/api/forms/submit",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "successMessage": "Form submitted successfully!",
+    "errorMessage": "There was an error submitting the form. Please try again."
+  }
+}

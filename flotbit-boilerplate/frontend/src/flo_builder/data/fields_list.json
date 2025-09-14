@@ -1,0 +1,295 @@
+[
+  {
+    "title": "Progressbar",
+    "label": {
+      "value": "...",
+      "placeholder": "Enter title",
+      "required": true
+    },
+    "description": {
+      "value": "",
+      "placeholder": "Enter description",
+      "required": false
+    },
+    "type": "stepped_progressbar",
+    "config": {
+      "total": {
+        "label": "Steps",
+        "value": 5,
+        "type": "number"
+      },
+      "defaultValue": {
+        "label": "Default Value",
+        "value": 0,
+        "type": "number"
+      },
+      "showLabels": {
+        "label": "Show Step Label",
+        "value": true,
+        "type": "checkbox"
+      }
+    }
+  },
+  {
+    "title": "Star Rating",
+    "label": {
+      "value": "...",
+      "placeholder": "Enter title",
+      "required": true
+    },
+    "description": {
+      "value": "",
+      "placeholder": "Enter description",
+      "required": false
+    },
+    "type": "star_rating",
+    "config": {
+      "total": {
+        "label": "Stars",
+        "value": 5,
+        "type": "number"
+      },
+      "defaultValue": {
+        "label": "Default Value",
+        "value": 0,
+        "type": "number"
+      }
+    }
+  },
+  {
+    "title": "Number Input",
+    "label": {
+      "value": "...",
+      "placeholder": "Enter title",
+      "required": true
+    },
+    "description": {
+      "value": "",
+      "placeholder": "Enter description",
+      "required": false
+    },
+    "type": "number",
+    "config": {
+      "defaultValue": {
+        "label": "Default Value",
+        "value": 0,
+        "type": "number"
+      },
+      "min": {
+        "label": "Min Value",
+        "value": 0,
+        "type": "number"
+      },
+      "max": {
+        "label": "Max Value",
+        "value": 100,
+        "type": "number"
+      }
+    }
+  },
+  {
+    "title": "Text Input",
+    "label": {
+      "value": "...",
+      "placeholder": "Enter title",
+      "required": true
+    },
+    "description": {
+      "value": "",
+      "placeholder": "Enter description",
+      "required": false
+    },
+    "type": "text",
+    "config": {
+      "defaultValue": {
+        "label": "Default Value",
+        "value": "",
+        "type": "text"
+      },
+      "placeholder": {
+        "label": "Placeholder",
+        "value": "Enter text",
+        "type": "text"
+      }
+    }
+  },
+  {
+    "title": "Checkbox Group",
+    "label": {
+      "value": "...",
+      "placeholder": "Enter title",
+      "required": true
+    },
+    "description": {
+      "value": "",
+      "placeholder": "Enter description",
+      "required": false
+    },
+    "type": "checkbox",
+    "config": {
+      "defaultValue": {
+        "label": "Default Value",
+        "value": [],
+        "type": "array"
+      },
+      "options": {
+        "label": "Options",
+        "value": [
+          {
+            "id": 1,
+            "value": 1,
+            "label": "Option 1"
+          },
+          {
+            "id": 2,
+            "value": 2,
+            "label": "Option 2"
+          }
+        ],
+        "type": "array"
+      }
+    }
+  },
+  {
+    "title": "Radio Group",
+    "label": {
+      "value": "...",
+      "placeholder": "Enter title",
+      "required": true
+    },
+    "description": {
+      "value": "",
+      "placeholder": "Enter description",
+      "required": false
+    },
+    "type": "radio",
+    "config": {
+      "defaultValue": {
+        "label": "Default Value",
+        "value": "",
+        "type": "text"
+      },
+      "options": {
+        "label": "Options",
+        "value": [
+          {
+            "id": 1,
+            "value": 1,
+            "label": "Option 1"
+          },
+          {
+            "id": 2,
+            "value": 2,
+            "label": "Option 2"
+          }
+        ],
+        "type": "array"
+      }
+    }
+  },
+  {
+    "title": "File Upload",
+    "label": {
+      "value": "...",
+      "placeholder": "Enter title",
+      "required": true
+    },
+    "description": {
+      "value": "",
+      "placeholder": "Enter description",
+      "required": false
+    },
+    "type": "file_upload",
+    "config": {
+      "maxSize": {
+        "label": "Max Size (MB)",
+        "value": 5,
+        "type": "number"
+      },
+      "acceptedFileTypes": {
+        "label": "Accepted File Types",
+        "value": ".pdf,.jpg,.jpeg,.png,.doc,.docx",
+        "type": "text"
+      }
+    }
+  },
+  {
+    "title": "Emojis Review",
+    "label": {
+      "value": "...",
+      "placeholder": "Enter title",
+      "required": true
+    },
+    "description": {
+      "value": "",
+      "placeholder": "Enter description",
+      "required": false
+    },
+    "type": "emojis_review",
+    "config": {
+      "defaultValue": {
+        "label": "Default Value",
+        "value": "",
+        "type": "text"
+      }
+    }
+  },
+  {
+    "title": "Yes or No",
+    "label": {
+      "value": "...",
+      "placeholder": "Enter title",
+      "required": true
+    },
+    "description": {
+      "value": "",
+      "placeholder": "Enter description",
+      "required": false
+    },
+    "type": "yes_or_no",
+    "config": {
+      "defaultValue": {
+        "label": "Default Value",
+        "value": true,
+        "type": "checkbox"
+      }
+    }
+  },
+  {
+    "title": "Detailed Options",
+    "label": {
+      "value": "...",
+      "placeholder": "Enter title",
+      "required": true
+    },
+    "description": {
+      "value": "",
+      "placeholder": "Enter description",
+      "required": false
+    },
+    "type": "detailed_options",
+    "config": {
+      "defaultValue": {
+        "label": "Default Value",
+        "value": [],
+        "type": "array"
+      },
+      "options": {
+        "label": "Options",
+        "value": [
+          {
+            "id": 1,
+            "value": 1,
+            "label": "Option 1"
+          },
+          {
+            "id": 2,
+            "value": 2,
+            "label": "Option 2"
+          }
+        ],
+        "type": "array"
+      }
+    }
+  }
+]

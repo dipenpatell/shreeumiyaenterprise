@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@import "./App.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@import "../layout/vertical_layout/index.css";
+@import "../layout/horizontal_layout/index.css";
+@import "../components/breadcrumbs/index.css";
+@import "../../flo/form_layout.css";

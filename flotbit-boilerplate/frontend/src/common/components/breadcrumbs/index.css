@@ -1,0 +1,21 @@
+.breadcrumbs-wrapper {
+  display: flex;
+  gap: 1.25em;
+  align-items: center;
+  color: var(--primary-color);
+  color: var(--nav-text-color);
+  padding: 2.5em 3.75em 1.875em;
+  opacity: var(--secondary-opacity);
+  width: 100%
+}
+
+.breadcrumb-item.active {
+    opacity: 1;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs-wrapper {
+    display: none;
+  }
+}
