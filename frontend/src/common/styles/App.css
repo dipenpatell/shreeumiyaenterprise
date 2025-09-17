@@ -1,0 +1,35 @@
+:root {
+  --primary-color: #05364d;
+  --nav-bg-color: #05364d6c;
+  --primary-gradient: linear-gradient(45deg, #05364d 0%, #0d7aa3 100%);
+}
+
+#layout-wrapper {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+  font-size: 16px;
+  position: relative;
+
+  background: var(--main-layout-bg);
+  color: var(--theme-text-color);
+}
+
+.background-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      white 2px,
+      transparent 2px
+    ),
+    radial-gradient(circle at 75% 75%, white 1px, transparent 1px);
+  background-size: 100px 100px, 50px 50px;
+  animation: float 20s ease-in-out infinite;
+}
