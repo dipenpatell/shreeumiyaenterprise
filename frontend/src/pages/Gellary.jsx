@@ -13,92 +13,13 @@ export default function PhotographyGallery() {
     { id: 'event', label: 'Events' }
   ];
 
-  const galleryData = [
-    {
-      id: 1,
-      category: 'wedding',
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=500&fit=crop',
-      title: "Sarah & Michael's Wedding",
-      alt: 'Wedding Photography'
-    },
-    {
-      id: 2,
-      category: 'wedding',
-      image: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=400&h=500&fit=crop',
-      title: "Emma & David's Ceremony",
-      alt: 'Wedding Photography'
-    },
-    {
-      id: 3,
-      category: 'pre-wedding',
-      image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&h=500&fit=crop',
-      title: 'Romantic Sunset Session',
-      alt: 'Pre-Wedding Photography'
-    },
-    {
-      id: 4,
-      category: 'pre-wedding',
-      image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=500&fit=crop',
-      title: 'Garden Love Story',
-      alt: 'Pre-Wedding Photography'
-    },
-    {
-      id: 5,
-      category: 'engagement',
-      image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=500&fit=crop',
-      title: 'The Proposal Moment',
-      alt: 'Engagement Photography'
-    },
-    {
-      id: 6,
-      category: 'engagement',
-      image: 'https://images.unsplash.com/photo-1529636798458-92182e662485?w=400&h=500&fit=crop',
-      title: 'Urban Engagement',
-      alt: 'Engagement Photography'
-    },
-    {
-      id: 7,
-      category: 'portrait',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop',
-      title: 'Classic Portrait',
-      alt: 'Portrait Photography'
-    },
-    {
-      id: 8,
-      category: 'wedding',
-      image: 'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=400&h=500&fit=crop',
-      title: 'Beach Wedding Bliss',
-      alt: 'Wedding Photography'
-    },
-    {
-      id: 9,
-      category: 'event',
-      image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=500&fit=crop',
-      title: 'Corporate Gala',
-      alt: 'Event Photography'
-    },
-    {
-      id: 10,
-      category: 'event',
-      image: 'https://images.unsplash.com/photo-1464207687429-7505649dae38?w=400&h=500&fit=crop',
-      title: 'Birthday Celebration',
-      alt: 'Event Photography'
-    },
-    {
-      id: 11,
-      category: 'wedding',
-      image: 'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=400&h=500&fit=crop',
-      title: 'Beach Wedding Bliss',
-      alt: 'Wedding Photography'
-    },
-    {
-      id: 12,
-      category: 'pre-wedding',
-      image: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&h=500&fit=crop',
-      title: 'Mountain Adventure',
-      alt: 'Pre-Wedding Photography'
-    }
-  ];
+  const [galleryData, setGalleryData] = useState([]);
+
+  useEffect(() => {
+    fetch("/medias.json") // ✅ loads from public folder
+      .then((res) => res.json())
+      .then((data) => setGalleryData(data.images.portfolio));
+  }, []);
 
   useEffect(() => {
     const filteredItems = activeFilter === 'all' 
@@ -106,7 +27,7 @@ export default function PhotographyGallery() {
       : galleryData.filter(item => item.category === activeFilter);
     
     setVisibleItems(filteredItems);
-  }, [activeFilter]);
+  }, [activeFilter, galleryData]);
 
   const handleFilterClick = (filterId) => {
     setActiveFilter(filterId);
@@ -151,7 +72,7 @@ export default function PhotographyGallery() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
           {visibleItems.map((item, index) => (
             <div
-              key={item.id}
+              key={index}
               className="group relative aspect-[3/4] rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl bg-gray-100"
               style={{
                 animationDelay: `${index * 100}ms`,
