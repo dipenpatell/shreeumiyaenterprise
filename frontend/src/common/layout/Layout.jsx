@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
 
 const Layout = ({ children }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [activeNavItem, setActiveNavItem] = useState("home");
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -17,6 +19,13 @@ const Layout = ({ children }) => {
     // { id: "gallery", icon: "", label: "Gallery" },
     { id: "contact_us", icon: "", label: "Contact Us", path: "/contact-us" },
   ];
+  
+  // 🔹 Sync activeNavItem with URL
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const matchedItem = navItems.find(item => item.path === currentPath);
+    setActiveNavItem(matchedItem ? matchedItem.id : "home");
+  }, [location.pathname]); 
 
   // Handle scroll for navbar visibility
   useEffect(() => {
