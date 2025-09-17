@@ -77,7 +77,7 @@ const Home = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="hidden flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => navigate("/contact-us")}
                 className="px-8 py-4 [background:var(--primary-gradient)] text-white font-semibold rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300"
