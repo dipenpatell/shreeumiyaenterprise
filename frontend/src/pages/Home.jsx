@@ -51,16 +51,10 @@ const Home = () => {
       </div>
 
       {/* Loading State */}
-      {!isVideoLoaded && (
-        <div className="absolute inset-0 [background:linear-gradient(135deg,_#05364d_0%,_#0a5d7a_35%,#1a8fb8_100%)] bg-gradient-to-br from-pink-400 via-red-400 to-yellow-400 flex items-center justify-center">
-          <div class="background-pattern"></div>
-          <div className="text-center text-white">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
-            <p className="text-lg font-medium">Loading beautiful moments...</p>
-          </div>
-        </div>
-      )}
-
+      <div className={`${isVideoLoaded ? "opacity-0" : "opacity-100"} transition-opacity duration-700 ease-in-out absolute inset-0 [background:linear-gradient(135deg,_#05364d_0%,_#0a5d7a_35%,#1a8fb8_100%)] bg-gradient-to-br from-pink-400 via-red-400 to-yellow-400 flex items-center justify-center`}>
+        <div class="background-pattern"></div>
+      </div>
+      
       {/* Hero Content */}
       <div className="relative z-10 flex items-center justify-center h-full text-center text-white px-4">
         <div className="max-w-4xl mx-auto">
