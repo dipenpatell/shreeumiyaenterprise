@@ -9,6 +9,8 @@ export default function PhotographyGallery() {
   const [categories, setCategories] = useState([]);
   const [videos, setVideos] = useState([]);
   const [videoIndex, setVideoIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   useEffect(() => {
     fetch("/medias.json")
@@ -83,6 +85,32 @@ export default function PhotographyGallery() {
     setVideoIndex((prev) => (prev - 1 + videos.length) % videos.length);
   };
 
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const minSwipeDistance = 50;
+    
+    if (distance > minSwipeDistance && videoIndex < videos.length - 3) {
+      nextVideo();
+    }
+    
+    if (distance < -minSwipeDistance && videoIndex > 0) {
+      prevVideo();
+    }
+    
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
+
   return (
     <div className="min-h-screen bg-white text-gray-800 font-serif">
       {/* Header */}
@@ -128,7 +156,12 @@ export default function PhotographyGallery() {
           )}
 
           {/* Video Slider */}
-          <div className="overflow-hidden">
+          <div 
+            className="overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div 
               className="flex justify-center transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${videoIndex * (100 / 3)}%)` }}
