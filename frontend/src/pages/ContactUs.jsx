@@ -199,7 +199,7 @@ const ContactUs = () => {
                   <div>
                     <h4 className="font-medium text-gray-800 mb-1">Location</h4>
                     <p className="text-gray-600">A-10, Akshar Aanand complex,</p>
-                    <p className="text-gray-600">Opp. karigar hotel, main road,</p>
+                    <p className="text-gray-600">Opp. zalawad battery, main road,</p>
                     <p className="text-gray-600">Surendranagar,Gujarat, India</p>
                   </div>
                 </div>
