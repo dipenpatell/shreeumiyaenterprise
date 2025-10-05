@@ -134,7 +134,7 @@ export default function PhotographyGallery() {
               style={{ transform: `translateX(-${videoIndex * (100 / 3)}%)` }}
             >
               {videos.map((video, index) => (
-                <div key={index} className="mb-5 w-1/3 flex-shrink-0 px-3">
+                <div key={index} className="mb-5 max-md:w-1/1 w-1/3 flex-shrink-0 px-3">
                   <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
                     <div className="relative aspect-video bg-black">
                       <iframe 
