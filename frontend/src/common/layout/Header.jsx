@@ -15,7 +15,7 @@ const Header = () => (
           {/* Social Links */}
           <div className="flex items-center space-x-4">
             <a 
-              href="https://instagram.com" 
+              href="https://instagram.com/shreeumiyaenterprise/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center justify-center w-12 h-12 bg-white bg-opacity-10 backdrop-blur-sm bg-white/20 border border-white border-opacity-20 rounded-full text-white hover:bg-opacity-20 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
@@ -25,7 +25,7 @@ const Header = () => (
               </svg>
             </a>
             <a 
-              href="tel:+1234567890"
+              href="tel:9824832113"
               className="flex items-center justify-center w-12 h-12 bg-white bg-opacity-10 backdrop-blur-sm bg-white/20 border border-white border-opacity-20 rounded-full text-white hover:bg-opacity-20 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
