@@ -174,7 +174,7 @@ const ContactUs = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800 mb-1">Email</h4>
-                    <a href="mailto:shreeumiyaenterprise16@gmail.com" className="text-gray-600 hover:text-black transition-colors">
+                    <a href="mailto:shreeumiyaenterprise16@gmail.com" className="break-all text-gray-600 hover:text-black transition-colors">
                       shreeumiyaenterprise16@gmail.com
                     </a>
                   </div>

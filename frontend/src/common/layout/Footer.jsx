@@ -23,7 +23,7 @@ const Footer = () => {
             <Mail className="w-5 h-5 text-white" />
             <a 
               href="mailto:shreeumiyaenterprise16@gmail.com"
-              className="text-xl md:text-2xl font-medium hover:text-white transition-colors"
+              className="text-xl md:text-2xl font-medium hover:text-white transition-colors break-all"
             >
               shreeumiyaenterprise16@gmail.com
             </a>

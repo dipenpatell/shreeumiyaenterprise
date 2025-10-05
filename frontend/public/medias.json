@@ -80,6 +80,28 @@
             "src": "https://res.cloudinary.com/djtu7zfrq/video/upload/v1758091429/TheLion_lm3lmd.mp4",
             "title": "Showreel 2024",
             "alt": "Photography Showreel"
-        }
+        },
+        "youtube_gellary": [
+            {
+                "title": "Navratri mahotsav 2025",
+                "link": "https://www.youtube.com/embed/sslRqYNG0PE?si=J8Y5rqDbqy482YR4"
+            },
+            {
+                "title": "Navratri mahotsav 2025",
+                "link": "https://www.youtube.com/embed/sslRqYNG0PE?si=J8Y5rqDbqy482YR4"
+            },
+            {
+                "title": "Navratri mahotsav 2025",
+                "link": "https://www.youtube.com/embed/sslRqYNG0PE?si=J8Y5rqDbqy482YR4"
+            },
+            {
+                "title": "Navratri mahotsav 2025",
+                "link": "https://www.youtube.com/embed/sslRqYNG0PE?si=J8Y5rqDbqy482YR4"
+            },
+            {
+                "title": "Navratri mahotsav 2025",
+                "link": "https://www.youtube.com/embed/sslRqYNG0PE?si=J8Y5rqDbqy482YR4"
+            }
+        ]
     }
 }

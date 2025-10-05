@@ -95,7 +95,7 @@ const Home = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+        <div className="absolute bottom-30 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
           <div className="flex flex-col items-center">
             {/* <span className="text-sm mb-2 opacity-75">Scroll to explore</span> */}
             <svg
