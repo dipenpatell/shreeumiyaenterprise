@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Instagram, Camera, Clock, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Camera, Clock, Send, Youtube } from 'lucide-react';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -174,8 +174,8 @@ const ContactUs = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-800 mb-1">Email</h4>
-                    <a href="mailto:shreeumiyaenterprise@gmail.COM" className="text-gray-600 hover:text-black transition-colors">
-                      shreeumiyaenterprise@gmail.com
+                    <a href="mailto:shreeumiyaenterprise16@gmail.com" className="text-gray-600 hover:text-black transition-colors">
+                      shreeumiyaenterprise16@gmail.com
                     </a>
                   </div>
                 </div>
@@ -209,9 +209,21 @@ const ContactUs = () => {
                     <Instagram className="w-5 h-5 text-gray-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-800 mb-1">Social Media</h4>
+                    <h4 className="font-medium text-gray-800 mb-1">Instagram</h4>
                     <a href="https://instagram.com/shreeumiyaenterprise/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-black transition-colors">
-                      Follow us on Instagram
+                      Follow us
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-gray-100 p-3 rounded-full">
+                    <Youtube className="w-5 h-5 text-gray-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-800 mb-1">YouTube</h4>
+                    <a href="https://youtube.com/shreeumiyaenterprise/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-black transition-colors">
+                      Subscribe Now
                     </a>
                   </div>
                 </div>

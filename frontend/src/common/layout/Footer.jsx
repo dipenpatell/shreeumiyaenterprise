@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -22,16 +22,16 @@ const Footer = () => {
           <div className="flex items-center justify-center gap-3 mb-8">
             <Mail className="w-5 h-5 text-white" />
             <a 
-              href="mailto:shreeumiyaenterprise@gmail.COM"
+              href="mailto:shreeumiyaenterprise16@gmail.com"
               className="text-xl md:text-2xl font-medium hover:text-white transition-colors"
             >
-              shreeumiyaenterprise@gmail.com
+              shreeumiyaenterprise16@gmail.com
             </a>
           </div>
         </div>
 
         {/* Contact Info Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
           {/* Phone Number */}
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
@@ -58,7 +58,7 @@ const Footer = () => {
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <Instagram className="w-4 h-4 text-white" />
-              <span className="text-sm text-white font-medium">Social Media</span>
+              <span className="text-sm text-white font-medium">Instagram</span>
             </div>
             <a 
               href="https://instagram.com/shreeumiyaenterprise/" 
@@ -66,7 +66,23 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-white font-medium hover:text-white transition-colors"
             >
-              Instagram
+              Follow Us
+            </a>
+          </div>
+
+          {/* Youtube */}
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Youtube className="w-4 h-4 text-white" />
+              <span className="text-sm text-white font-medium">YouTube</span>
+            </div>
+            <a 
+              href="https://youtube.com/shreeumiyaenterprise/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white font-medium hover:text-white transition-colors"
+            >
+              Subscribe Now
             </a>
           </div>
         </div>
