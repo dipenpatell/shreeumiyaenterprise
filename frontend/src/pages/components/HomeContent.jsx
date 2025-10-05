@@ -1,48 +1,12 @@
 import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function HomeContent() {
   const navigate = useNavigate();
   const [activeTestimonial, setActiveTestimonial] = useState(0);
-
-  const ceremonies = [
-    {
-      name: "Mehendi",
-      description: "Intricate henna designs and joyful celebrations",
-      image:
-        "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=400&h=300&fit=crop",
-    },
-    {
-      name: "Sangeet",
-      description: "Musical night filled with dance and merriment",
-      image:
-        "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&h=300&fit=crop",
-    },
-    {
-      name: "Haldi",
-      description: "Sacred turmeric ceremony of blessings",
-      image:
-        "https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop",
-    },
-    {
-      name: "Baraat",
-      description: "Grand procession of the groom",
-      image:
-        "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=300&fit=crop",
-    },
-    {
-      name: "Ceremony",
-      description: "Sacred vows and timeless rituals",
-      image:
-        "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=400&h=300&fit=crop",
-    },
-    {
-      name: "Reception",
-      description: "Celebration with family and friends",
-      image:
-        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=300&fit=crop",
-    },
-  ];
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const testimonials = [
     {
@@ -83,6 +47,44 @@ export default function HomeContent() {
       features: ["Party highlights", "Family portraits", "Special moments"],
     },
   ];
+
+  const handlePrevTestimonial = () => {
+    setActiveTestimonial((prev) =>
+      prev === 0 ? testimonials.length - 1 : prev - 1
+    );
+  };
+
+  const handleNextTestimonial = () => {
+    setActiveTestimonial((prev) =>
+      prev === testimonials.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      handleNextTestimonial();
+    }
+    if (isRightSwipe) {
+      handlePrevTestimonial();
+    }
+
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
 
   return (
     <div className="bg-white">
@@ -192,7 +194,12 @@ export default function HomeContent() {
           </h2>
 
           <div className="relative">
-            <div className="bg-white p-8 md:p-12 rounded-2xl shadow-xl">
+            <div
+              className="bg-white p-8 md:p-12 rounded-2xl shadow-xl transition-all duration-300"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               <div className="text-6xl text-teal-200 mb-4">"</div>
               <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
                 {testimonials[activeTestimonial].text}
@@ -206,6 +213,23 @@ export default function HomeContent() {
                 </p>
               </div>
             </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={handlePrevTestimonial}
+              className="max-md:hidden absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 text-teal-600 hover:bg-teal-50"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft size={24} />
+            </button>
+
+            <button
+              onClick={handleNextTestimonial}
+              className="max-md:hidden absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 text-teal-600 hover:bg-teal-50"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight size={24} />
+            </button>
 
             <div className="flex justify-center mt-8 space-x-2">
               {testimonials.map((_, index) => (

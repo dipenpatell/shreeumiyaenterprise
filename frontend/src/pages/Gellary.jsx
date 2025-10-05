@@ -99,7 +99,7 @@ export default function PhotographyGallery() {
     const distance = touchStart - touchEnd;
     const minSwipeDistance = 50;
     
-    if (distance > minSwipeDistance && videoIndex < videos.length - 3) {
+    if (distance > minSwipeDistance && videoIndex < videos.length - 1) {
       nextVideo();
     }
     
