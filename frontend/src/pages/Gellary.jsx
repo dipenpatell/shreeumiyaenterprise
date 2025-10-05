@@ -143,7 +143,7 @@ export default function PhotographyGallery() {
             </button>
           )}
 
-          {videoIndex < videos.length - 3 && (
+          {videoIndex < videos.length - 1 && (
             <button
               onClick={nextVideo}
               className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-teal-800 text-white rounded-full p-3 hover:bg-teal-600 transition-all shadow-lg hover:scale-110"
@@ -163,11 +163,11 @@ export default function PhotographyGallery() {
             onTouchEnd={handleTouchEnd}
           >
             <div 
-              className="flex justify-center transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${videoIndex * (100 / 3)}%)` }}
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${videoIndex * (100 / 1)}%)` }}
             >
               {videos.map((video, index) => (
-                <div key={index} className="mb-5 max-md:w-1/1 w-1/3 flex-shrink-0 px-3">
+                <div key={index} className="mb-5 max-md:w-1/1 w-1/1 flex-shrink-0 px-3">
                   <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
                     <div className="relative aspect-video bg-black">
                       <iframe 
@@ -190,7 +190,7 @@ export default function PhotographyGallery() {
 
           {/* Progress Indicator */}
           <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: Math.ceil(videos.length - 2) }).map((_, index) => (
+            {Array.from({ length: Math.ceil(videos.length) }).map((_, index) => (
               <div
                 key={index}
                 className={`h-1 rounded-full transition-all ${
