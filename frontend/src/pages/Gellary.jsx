@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 export default function PhotographyGallery() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [visibleItems, setVisibleItems] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [galleryData, setGalleryData] = useState([]);
 
   const categories = [
     { id: 'all', label: 'All' },
@@ -13,12 +16,11 @@ export default function PhotographyGallery() {
     { id: 'event', label: 'Events' }
   ];
 
-  const [galleryData, setGalleryData] = useState([]);
-
   useEffect(() => {
-    fetch("/medias.json") // ✅ loads from public folder
+    fetch("/medias.json")
       .then((res) => res.json())
-      .then((data) => setGalleryData(data.images.portfolio));
+      .then((data) => setGalleryData(data.images.portfolio))
+      .catch((err) => console.error('Error loading gallery:', err));
   }, []);
 
   useEffect(() => {
@@ -37,6 +39,39 @@ export default function PhotographyGallery() {
     const categoryObj = categories.find(cat => cat.id === category);
     return categoryObj ? categoryObj.label : category;
   };
+
+  const openLightbox = (index) => {
+    setCurrentIndex(index);
+    setSelectedImage(visibleItems[index]);
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
+  };
+
+  const goToPrevious = () => {
+    const newIndex = currentIndex > 0 ? currentIndex - 1 : visibleItems.length - 1;
+    setCurrentIndex(newIndex);
+    setSelectedImage(visibleItems[newIndex]);
+  };
+
+  const goToNext = () => {
+    const newIndex = currentIndex < visibleItems.length - 1 ? currentIndex + 1 : 0;
+    setCurrentIndex(newIndex);
+    setSelectedImage(visibleItems[newIndex]);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!selectedImage) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') goToPrevious();
+      if (e.key === 'ArrowRight') goToNext();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  });
 
   return (
     <div className="min-h-screen bg-white text-gray-800 font-serif">
@@ -78,6 +113,7 @@ export default function PhotographyGallery() {
                 animationDelay: `${index * 100}ms`,
                 animation: 'fadeIn 0.6s ease-out forwards'
               }}
+              onClick={() => openLightbox(index)}
             >
               <img
                 src={item.image}
@@ -106,6 +142,62 @@ export default function PhotographyGallery() {
           </div>
         )}
       </div>
+
+      {/* Lightbox */}
+      {selectedImage && (
+        <div className="fixed inset-0 z-50 bg-black flex items-center justify-center p-4">
+          {/* Close Button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 text-white hover:text-teal-400 transition-colors z-20 bg-black bg-opacity-50 rounded-full p-2"
+            aria-label="Close"
+          >
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Previous Button */}
+          <button
+            onClick={goToPrevious}
+            className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:text-teal-400 transition-colors z-20 bg-black bg-opacity-50 rounded-full p-3"
+            aria-label="Previous"
+          >
+            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Next Button */}
+          <button
+            onClick={goToNext}
+            className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:text-teal-400 transition-colors z-20 bg-black bg-opacity-50 rounded-full p-3"
+            aria-label="Next"
+          >
+            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Image Container */}
+          <div className="w-full h-full flex flex-col items-center justify-center">
+            <div className="relative w-full h-full flex items-center justify-center">
+            <img
+              src={selectedImage.image}
+              alt={selectedImage.alt}
+                className="max-w-full max-h-full w-auto h-auto object-contain"
+                style={{ maxHeight: 'calc(100vh - 120px)' }}
+            />
+            </div>
+            <div className="text-center mt-4 text-white absolute bottom-6 left-0 right-0 z-10">
+              <h3 className="text-xl font-light mb-1">{selectedImage.title}</h3>
+              <p className="text-xs text-teal-400 uppercase tracking-wider">
+                {getCategoryLabel(selectedImage.category)} • {currentIndex + 1} / {visibleItems.length}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         @keyframes fadeIn {
