@@ -13,7 +13,7 @@ export default function PhotographyGallery() {
   const [touchEnd, setTouchEnd] = useState(0);
 
   useEffect(() => {
-    fetch("https://res.cloudinary.com/djtu7zfrq/raw/upload/medias.json")
+    fetch("https://res.cloudinary.com/dat5v1jue/raw/upload/medias_od1b79.json")
       .then((res) => res.json())
       .then((data) => {
         setGalleryData(data.images.portfolio);
