@@ -90,7 +90,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center border-t border-gray-200 pt-8">
           <p className="text-white text-sm">
-            ©1999 Shree Umiya Enterprise. All Rights Reserved
+            ©2005 Shree Umiya Enterprise. All Rights Reserved
           </p>
         </div>
       </div>

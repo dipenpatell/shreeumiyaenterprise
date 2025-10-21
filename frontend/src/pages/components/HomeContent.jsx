@@ -105,7 +105,7 @@ export default function HomeContent() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
               <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">
-                25+
+                20+
               </div>
               <div className="text-sm md:text-base text-orange-800 font-medium">
                 Years Experience
